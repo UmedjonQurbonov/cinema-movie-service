@@ -10,3 +10,14 @@ type Movie struct {
 	Age_limit   int       `json:"age_limit"`
 	CreatedAt   time.Time `json:"created_at"`
 }
+
+type CreateMovieRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Duration    int    `json:"duration"`
+	Age_limit   int    `json:"age_limit"`
+}
+
+type CreateMovieResponse struct {
+	ID int `json:"id"`
+}
