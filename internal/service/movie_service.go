@@ -16,6 +16,8 @@ var (
 
 type MovieRepository interface {
 	Create(ctx context.Context, movie *domain.Movie) (int, error)
+	GetAllMovie(ctx context.Context) ([]*domain.Movie, error)
+	GetByID(ctx context.Context, id int) (*domain.Movie, error)
 }
 
 
@@ -48,4 +50,16 @@ func (s *MovieService) Create(ctx context.Context, movie *domain.Movie) (int, er
 	}
 
 	return s.repo.Create(ctx, movie)
+}
+
+func (s *MovieService) GetAllMovie(ctx context.Context) ([]*domain.Movie, error) {
+	return s.repo.GetAllMovie(ctx)
+}
+
+func (s *MovieService) GetByID(ctx context.Context, id int) (*domain.Movie, error) {
+	if id <= 0 {
+		return &domain.Movie{}, fmt.Errorf("Id must be positive")
+	}
+
+	return s.repo.GetByID(ctx, id)
 }

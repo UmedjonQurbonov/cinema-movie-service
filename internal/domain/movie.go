@@ -21,3 +21,10 @@ type CreateMovieRequest struct {
 type CreateMovieResponse struct {
 	ID int `json:"id"`
 }
+
+type GetMovieResponse struct {
+	ID          int       `json:"id"`
+	Title       string    `json:"title"`
+	Duration    int       `json:"duration"`
+	Age_limit   int       `json:"age_limit"`
+}
